@@ -93,11 +93,10 @@ def dofetch(id, key, region):
         global gaojinData
         gaojinData="流量告警数据:\n"+"已使用："+str(TrafficUsed)+"GB"+"\n"+"总流量："+str(TrafficPackageTotal)+"GB"+"\n"+"剩余量："+str(TrafficPackageRemaining)+"GB"
         #获取实例状态 
-        myContent= i+1,"：",InstanceId,":","已使用：",TrafficUsed,"总流量：",TrafficPackageTotal,"剩余：",TrafficPackageRemaining
-        myMsgUrl =  "https://tgbot-red.vercel.app/api?token="+ tgToken +"&message="+ myContent
+        myMsgUrl ="https://tgbot-red.vercel.app/api?token="+ tgToken +"&message="+ gaojinData
         myResponse= requests.get(url=myMsgUrl).text
         print (myResponse)
-        print (myContent)
+        print (i+1,"：",InstanceId,":","已使用：",TrafficUsed,"总流量：",TrafficPackageTotal,"剩余：",TrafficPackageRemaining)
         if (InstanceState == "RUNNING"):
             gaojinSatus="流量告警状态：运行中!"
             print("运行中")
